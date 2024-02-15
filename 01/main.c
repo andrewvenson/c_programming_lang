@@ -28,10 +28,19 @@ void tempConversion(char t){
     }
 }
 
+void tempConversionSimpler(char t){
+    float temp2;
+    printHeader(t);
+    for(int temp1 = 0; temp1<=300; temp1=temp1+20){
+        temp2 = t=='c'?((temp1*(9/5))+32):((temp1-32.0)*(5.0/9.0));
+        printf("%s: %d\t%s: %.1f\n", t=='c'?"Celsius":"Fahrenheit",temp1, t=='c'?"Fahrenheit":"Celsius", temp2);
+    }
+}
+
 
 int main(){
     tempConversion('f');
-    tempConversion('c');
+    tempConversionSimpler('c');
  
     return 0;
 }
