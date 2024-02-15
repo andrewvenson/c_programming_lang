@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 void printHeader(char t){
     //heading
@@ -28,10 +29,11 @@ void tempConversion(char t){
     }
 }
 
-void tempConversionSimpler(char t){
+void tempConversionSimpler(char t, bool r){
     float temp2;
     printHeader(t);
-    for(int temp1 = 0; temp1<=300; temp1=temp1+20){
+
+    for(int temp1 = r==true?300:0; temp1<=300 && temp1>=0; temp1=r==true?temp1-20:temp1+20){
         temp2 = t=='c'?((temp1*(9/5))+32):((temp1-32.0)*(5.0/9.0));
         printf("%s: %d\t%s: %.1f\n", t=='c'?"Celsius":"Fahrenheit",temp1, t=='c'?"Fahrenheit":"Celsius", temp2);
     }
@@ -40,7 +42,9 @@ void tempConversionSimpler(char t){
 
 int main(){
     tempConversion('f');
-    tempConversionSimpler('c');
+    tempConversionSimpler('c', false);
+    tempConversionSimpler('c', true);
+    tempConversionSimpler('f', true);
  
     return 0;
 }
